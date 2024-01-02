@@ -12,7 +12,20 @@ services:
       - POSTGRES_DB=employee
     volumes:
       - employee-db:/var/lib/postgresql/data
+    
+  address-db:
+    image: postgres:latest
+    container_name: address-db
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=address
+    volumes:
+      - address-db:/var/lib/postgresql/data
 
 volumes:
   employee-db:
+  address-db:
 
