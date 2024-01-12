@@ -11,8 +11,11 @@ import com.hb.addressapp.addressservice.dto.AddressResponse;
 import com.hb.addressapp.addressservice.mapper.AddressMapper;
 import com.hb.addressapp.addressservice.service.AddressService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
+@Tag(name = "Address")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("address")
@@ -21,6 +24,7 @@ public class AddressController {
     private final AddressService service;
 
     @GetMapping("/{userId}")
+    @Operation(summary = "Get address by user id")
     public AddressResponse getAddressByUserId(@PathVariable UUID userId) {
         return AddressMapper.toResponse(service.getAddressByUserId(userId));
     }
