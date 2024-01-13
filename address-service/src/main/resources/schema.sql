@@ -1,5 +1,3 @@
--- Active: 1704163172283@@127.0.0.1@5433@address
-
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 DROP TABLE IF EXISTS address;
@@ -13,5 +11,5 @@ CREATE TABLE
         state VARCHAR(100) NOT NULL,
         country VARCHAR(100) NOT NULL,
         zip VARCHAR(100) NOT NULL,
-        user_id UUID NOT NULL
+        user_id UUID NOT NULL UNIQUE
     );

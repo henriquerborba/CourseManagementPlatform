@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.hb.addressapp.addressservice.dto.AddressRequest;
 import com.hb.addressapp.addressservice.entity.Address;
 import com.hb.addressapp.addressservice.repository.AddressRepository;
 
@@ -20,6 +21,10 @@ public class AddressService {
     public Address getAddressByUserId(UUID userId) {
         return repository.findByUserId(userId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Address not found"));
+    }
+
+    public void createAddress(AddressRequest data) {
+        repository.save(new Address(data));
     }
 
 }

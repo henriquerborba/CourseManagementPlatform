@@ -2,6 +2,8 @@ package com.hb.addressapp.addressservice.entity;
 
 import java.util.UUID;
 
+import com.hb.addressapp.addressservice.dto.AddressRequest;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,7 +36,20 @@ public class Address {
 
     private String zip;
 
+    private String country;
+
     @Column(name = "user_id")
     private UUID userId;
+
+
+    public Address(AddressRequest data) {
+        number = data.number();
+        street = data.street();
+        city = data.city();
+        state = data.state();
+        zip = data.zip();
+        userId = data.userId();
+        country = data.country();
+    }
 
 }
