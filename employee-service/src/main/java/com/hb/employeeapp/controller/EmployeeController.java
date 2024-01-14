@@ -1,5 +1,6 @@
 package com.hb.employeeapp.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 
+
 @RestController
 @Tag(name = "Employee")
 @RequiredArgsConstructor
@@ -27,6 +29,13 @@ public class EmployeeController {
     @Operation(summary = "Get employee details by id")
     public EmployeeResponse getEmployeeDetails(@PathVariable UUID id) {
         return service.getEmployeeDetails(id);
+    }
+    
+
+    @GetMapping()
+    @Operation(summary = "Get all employees")
+    public List<EmployeeResponse> getMethodName() {
+        return service.findAll();
     }
     
 }
