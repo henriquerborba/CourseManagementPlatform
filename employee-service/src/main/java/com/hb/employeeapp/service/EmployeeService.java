@@ -1,5 +1,6 @@
 package com.hb.employeeapp.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,12 @@ public class EmployeeService {
                     return response;
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
+    }
+
+    public List<EmployeeResponse> findAll() {
+        return repository.findAll().stream()
+                .map(mapper::toResponse)
+                .toList();
     }
 
 }
